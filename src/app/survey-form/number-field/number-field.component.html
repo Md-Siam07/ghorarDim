@@ -1,0 +1,93 @@
+<mat-drawer-container class="drawer-container">
+    <mat-drawer #drawer class="drawer-sidenav" mode="over" position="end">
+        <form #formDirective
+            (ngSubmit)="onSubmit(formDirective)"
+            class="flex flex-col px-8 bg-card overflow-hidden">
+            <p class="header">Survey Question</p>
+
+            <div class="flex">
+                <mat-form-field appearance="outline" class="flex-auto" style="width:440px !important">
+                    <mat-label> Title </mat-label> 
+                    <input matInput 
+                         placeholder="{{fieldName}}" 
+                         value="{{fieldName}}"
+                         >
+                 </mat-form-field>
+            </div>
+
+            <div class="flex">
+                <mat-form-field appearance="outline" class="flex-auto" style="width:440px !important">
+                    <mat-label>Attributes</mat-label>
+                    <mat-select disabled="">
+                      <mat-option value="{{fieldName}}">Option</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" class="flex-auto">
+                    <mat-label> Min </mat-label> 
+                    <input matInput 
+                         placeholder="0" 
+                         value="0"
+                         >
+                 </mat-form-field>
+
+                 <mat-form-field appearance="outline" class="flex-auto">
+                    <mat-label> Max </mat-label> 
+                    <input matInput>
+                 </mat-form-field>
+            </div>
+
+            <div class="flex">
+                <mat-form-field appearance="outline" class="flex-auto" style="width:440px !important">
+                    <mat-label> Hint </mat-label> 
+                    <input matInput>
+                 </mat-form-field>
+            </div>
+
+        </form>
+    </mat-drawer>
+    
+    <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              <span type="button"
+                  class="label 
+                  label-default">
+                  {{index}} (number)
+            </span>
+            
+          </mat-panel-title>
+          <mat-panel-description>
+              <span type="button"
+                  class="label 
+                  label-primary">
+              {{fieldName}}
+            </span>
+          </mat-panel-description>
+          <mat-panel-description>
+              {{fieldName}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div  >
+          <div class="wrapper">
+              <mat-icon matTooltip="cancel" (click)="toggle()">cancel</mat-icon>
+              <mat-icon matTooltip="edit" *ngIf="!formClicked" (click)="showSideNav()">edit</mat-icon>
+              <mat-icon matTooltip="check" *ngIf="formClicked" (click)="hideForm()">check</mat-icon>
+              <div *ngIf="!formClicked">
+                  <div class="title">
+                      {{fieldName}}
+                  </div>
+                  <form name="dummyForm" #dummyForm>
+                          <input class="form-control">
+                  </form>
+              </div>
+              <div *ngIf="formClicked">
+                  <app-number-form></app-number-form>
+              </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    
+</mat-drawer-container>
