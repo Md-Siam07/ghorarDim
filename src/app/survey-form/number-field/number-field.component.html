@@ -2,13 +2,13 @@
     <mat-drawer #drawer class="drawer-sidenav" mode="over" position="end">
         <form #formDirective
             (ngSubmit)="onSubmit(formDirective)"
-            class="flex flex-col px-8 bg-card overflow-hidden">
+            class="flex flex-col px-8 bg-card overflow-hidden form-padding">
             <p class="header">Survey Question</p>
-
+            <hr>
             <div class="flex">
                 <mat-form-field appearance="outline" class="flex-auto" style="width:440px !important">
                     <mat-label> Title </mat-label> 
-                    <input matInput 
+                    <input matInput id="title"
                          placeholder="{{fieldName}}" 
                          value="{{fieldName}}"
                          >
@@ -46,6 +46,14 @@
                  </mat-form-field>
             </div>
 
+            <div class="flex example-button-row">
+                <button mat-raised-button extended color="primary">
+                  <mat-icon>upload</mat-icon>
+                  Upload Image
+                </button>
+                
+            </div>
+
         </form>
     </mat-drawer>
     
@@ -72,9 +80,9 @@
         </mat-expansion-panel-header>
         <div  >
           <div class="wrapper">
-              <mat-icon matTooltip="cancel" (click)="toggle()">cancel</mat-icon>
-              <mat-icon matTooltip="edit" *ngIf="!formClicked" (click)="showSideNav()">edit</mat-icon>
-              <mat-icon matTooltip="check" *ngIf="formClicked" (click)="hideForm()">check</mat-icon>
+              <mat-icon class="right-float" matTooltip="cancel" (click)="toggle()">cancel</mat-icon>
+              <mat-icon class="right-float" matTooltip="edit" *ngIf="!formClicked" (click)="showSideNav()">edit</mat-icon>
+              <mat-icon class="right-float" matTooltip="check" *ngIf="formClicked" (click)="hideForm()">check</mat-icon>
               <div *ngIf="!formClicked">
                   <div class="title">
                       {{fieldName}}
@@ -88,6 +96,6 @@
               </div>
           </div>
         </div>
-      </mat-expansion-panel>
+    </mat-expansion-panel>
     
 </mat-drawer-container>
