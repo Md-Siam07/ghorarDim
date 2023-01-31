@@ -13,6 +13,9 @@ export class NumberFormComponent implements OnInit {
   isSideBarOpen = false;
   disabled = false;
   required = false;
+  final = false;
+  minValue : null|number = null;
+  maxValue : null|number = null;
   @Input() fieldName: string = '';
   @Input() index!: number;
   @ViewChild('drawer') drawer!: MatDrawer;
@@ -33,6 +36,11 @@ export class NumberFormComponent implements OnInit {
   hidePannel() {
     this.panelOpenState = false;
     console.log('called')
+  }
+
+  done(){
+    this.final = true;
+    this.hideForm();
   }
 
   onSubmit(form: any) {

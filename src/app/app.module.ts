@@ -16,13 +16,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { NumberFormComponent } from './survey-form/number-form/number-form.component';
+import { SurveyFormModularizedComponent } from './survey-form-modularized/survey-form-modularized.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SurveyFormComponent,
     NumberFieldComponent,
-    NumberFormComponent
+    NumberFormComponent,
+    SurveyFormModularizedComponent
   ],
   imports: [
     BrowserModule,

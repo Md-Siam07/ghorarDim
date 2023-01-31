@@ -1,39 +1,44 @@
 <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true">
     <mat-expansion-panel-header>
-      <mat-panel-title>
-          <span type="button"
-              class="label 
-              label-default">
-              {{index}} (number)
-        </span>
+        <mat-panel-title> 
+            <span type="button"
+                class="label 
+                label-default">
+                {{index}} (number)
+            </span>
         
-      </mat-panel-title>
-      <mat-panel-description>
-          <span type="button"
-              class="label 
-              label-primary">
-          {{fieldName}}
-        </span>
-      </mat-panel-description>
-      <mat-panel-description>
-          {{fieldName}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+        </mat-panel-title>
+        <mat-panel-description>
+            <span type="button"
+                class="label 
+                label-primary">
+            {{fieldName}}
+            </span>
+        </mat-panel-description>
+        <mat-panel-description>
+            {{fieldName}}
+        </mat-panel-description>
+        </mat-expansion-panel-header>
     <div  >
-      <div class="wrapper">
-          <mat-icon class="right-float" matTooltip="cancel" (click)="hidePannel()">cancel</mat-icon>
-          <mat-icon class="right-float" matTooltip="edit" *ngIf="!formClicked" (click)="showForm()">edit</mat-icon>
-          <mat-icon class="right-float" matTooltip="check" *ngIf="formClicked" (click)="hideForm()">check</mat-icon>
-          <div *ngIf="!formClicked">
-              <div class="title">
-                  {{fieldName}}
-              </div>
-              <form name="dummyForm" #dummyForm>
-                      <input class="dummy-form-control">
-              </form>
-          </div>
-          
-      </div>
+        <div class="wrapper">
+            <mat-icon class="right-float" matTooltip="cancel" (click)="hidePannel()">cancel</mat-icon>
+            <mat-icon class="right-float" matTooltip="edit" *ngIf="!formClicked" (click)="showForm()">edit</mat-icon>
+            <mat-icon class="right-float" matTooltip="check" *ngIf="formClicked" (click)="hideForm()">check</mat-icon>
+            <div *ngIf="!formClicked">
+                <div class="title">
+                    {{fieldName}}
+                </div>
+                <form name="dummyForm" #dummyForm>
+                        <input class="dummy-form-control">
+                </form>
+            </div>
+            <span *ngIf="(minValue || maxValue) && final" class="red-text">
+                *Input should be between {{minValue||''}}  and {{maxValue||''}}
+            </span>
+            <span class="red-text" *ngIf="final && required">
+                *Required
+            </span>
+        </div>
     </div>
     <div *ngIf="formClicked">
         <form #formDirective
@@ -65,14 +70,15 @@
                 <mat-form-field appearance="outline" class="flex-auto row-item">
                     <mat-label> Min </mat-label> 
                     <input matInput 
-                         placeholder="0" 
-                         value="0"
+                         placeholder="0"
+                         type="number" [(ngModel)]="minValue"
+                         [ngModelOptions]="{standalone: true}"
                          >
                  </mat-form-field>
 
                  <mat-form-field appearance="outline" class="flex-auto row-item">
                     <mat-label> Max </mat-label> 
-                    <input matInput>
+                    <input matInput type="number" [(ngModel)]="maxValue" [ngModelOptions]="{standalone: true}">
                  </mat-form-field>
             </div>
 
@@ -98,14 +104,14 @@
             </div>
 
             <section class="checkbox-section">
-                <mat-checkbox class="checkbox-margin" [(ngModel)]="required" [ngModelOptions]="{standalone: true}">Answer Required</mat-checkbox>
-                <mat-checkbox class="checkbox-margin" [(ngModel)]="disabled" [ngModelOptions]="{standalone: true}">Is Disabled</mat-checkbox>
+                <mat-checkbox class="checkbox-margin" [(ngModel)]="required" [ngModelOptions]="{standalone: true}" *ngIf="!disabled">Answer Required</mat-checkbox>
+                <mat-checkbox class="checkbox-margin" [(ngModel)]="disabled" [ngModelOptions]="{standalone: true}" *ngIf="!required">Is Disabled</mat-checkbox>
               </section>
 
         </form>
 
         <div class="btn-row">
-            <button class="btn-success" (click)="hideForm()"> 
+            <button class="btn-success" (click)="done()"> 
                 <i class="fa fa-check"></i> Done 
             </button>
 
