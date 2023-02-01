@@ -28,13 +28,45 @@
                 <div class="title">
                     {{title}}
                 </div>
-                <form name="dummyForm" #dummyForm>
-                        <input class="dummy-form-control">
+                <form 
+                class="flex flex-col 
+                overflow-hidden form-padding
+                white-background">
+                    <div class="row">
+                        <mat-form-field appearance="outline" class="flex-auto row-item">
+                            <mat-label> Latitute </mat-label> 
+                            <input matInput 
+                                placeholder="0"
+                                type="number"
+                                value="0"
+                                >
+                        </mat-form-field>
+        
+                        <mat-form-field appearance="outline" class="flex-auto row-item">
+                            <mat-label> Longitude </mat-label> 
+                            <input matInput type="number" 
+                            placeholder="0" value="0">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row">
+                        <mat-form-field appearance="outline" class="flex-auto row-item">
+                            <mat-label> Altitude </mat-label> 
+                            <input matInput 
+                                placeholder="0"
+                                type="number"
+                                value="0"
+                                >
+                        </mat-form-field>
+        
+                        <mat-form-field appearance="outline" class="flex-auto row-item">
+                            <mat-label> Precision </mat-label> 
+                            <input matInput type="number" 
+                            placeholder="0" value="0">
+                        </mat-form-field>
+                    </div>
                 </form>
             </div>
-            <span *ngIf="(minValue || maxValue) && final" class="red-text">
-                *Input should be between {{minValue||''}}  and {{maxValue||''}}
-            </span>
             <span class="red-text" *ngIf="final && required">
                 *Required
             </span>
@@ -75,36 +107,13 @@
                     </mat-autocomplete>
                   </mat-form-field>
             </div>
-
-            <div class="row">
-                <mat-form-field appearance="outline" class="flex-auto row-item">
-                    <mat-label> Min {{fieldName}} </mat-label> 
-                    <input matInput 
-                         placeholder="0"
-                         type="number" [(ngModel)]="minValue"
-                         [ngModelOptions]="{standalone: true}"
-                         >
-                 </mat-form-field>
-
-                 <mat-form-field appearance="outline" class="flex-auto row-item">
-                    <mat-label> Max {{fieldName}} </mat-label> 
-                    <input matInput type="number" [(ngModel)]="maxValue" [ngModelOptions]="{standalone: true}">
-                 </mat-form-field>
-            </div>
-
             <div class="flex">
                 <mat-form-field appearance="outline" class="flex-auto" style="width:440px !important">
                     <mat-label> Hint </mat-label> 
                     <input matInput>
                  </mat-form-field>
             </div>
-
             <div class="flex ">
-                <!-- <button mat-raised-button extended color="primary">
-                  <mat-icon>upload</mat-icon>
-                  Upload Image
-                </button> -->
-                
                 <label class="custom-file-upload" for="img">
                     <i class="fa fa-upload"></i>
                     Upload Image
@@ -117,7 +126,8 @@
                 <mat-checkbox class="checkbox-margin" [(ngModel)]="required" [ngModelOptions]="{standalone: true}" *ngIf="!disabled">Answer Required</mat-checkbox>
                 <mat-checkbox class="checkbox-margin" [(ngModel)]="disabled" [ngModelOptions]="{standalone: true}" *ngIf="!required">Is Disabled</mat-checkbox>
             </section>
-
+        
+            
         </form>
 
         <div class="btn-row">

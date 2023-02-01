@@ -75,21 +75,44 @@
                     </mat-autocomplete>
                   </mat-form-field>
             </div>
-
+            <div class="row">
+                <div class="row-item flex-auto">
+                    <label>From</label> <br>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button value="1">Today and Onwards</mat-radio-button> <br>
+                        <mat-radio-button value="2">Past Date Allowed</mat-radio-button> <br>
+                        <mat-radio-button value="3">Date Selection</mat-radio-button> <br>
+                    </mat-radio-group>
+                </div>
+                
+                <div class="row-item flex-auto">
+                    <label>To</label> <br>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button value="1">Upto Today</mat-radio-button> <br>
+                        <mat-radio-button value="2">Future Date Allowed</mat-radio-button> <br>
+                        <mat-radio-button value="3">Date Selection</mat-radio-button> <br>
+                    </mat-radio-group>
+                </div>
+                
+            </div>
             <div class="row">
                 <mat-form-field appearance="outline" class="flex-auto row-item">
-                    <mat-label> Min {{fieldName}} </mat-label> 
-                    <input matInput 
-                         placeholder="0"
-                         type="number" [(ngModel)]="minValue"
-                         [ngModelOptions]="{standalone: true}"
-                         >
-                 </mat-form-field>
+                    
+                    <mat-label>From</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                  
 
-                 <mat-form-field appearance="outline" class="flex-auto row-item">
-                    <mat-label> Max {{fieldName}} </mat-label> 
-                    <input matInput type="number" [(ngModel)]="maxValue" [ngModelOptions]="{standalone: true}">
-                 </mat-form-field>
+                <mat-form-field appearance="outline" class="flex-auto row-item">
+                    <mat-label>To</mat-label>
+                    <input matInput [matDatepicker]="picker2">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
             </div>
 
             <div class="flex">
@@ -116,7 +139,7 @@
             <section class="checkbox-section">
                 <mat-checkbox class="checkbox-margin" [(ngModel)]="required" [ngModelOptions]="{standalone: true}" *ngIf="!disabled">Answer Required</mat-checkbox>
                 <mat-checkbox class="checkbox-margin" [(ngModel)]="disabled" [ngModelOptions]="{standalone: true}" *ngIf="!required">Is Disabled</mat-checkbox>
-            </section>
+              </section>
 
         </form>
 

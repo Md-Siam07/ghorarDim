@@ -1,0 +1,58 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true">
+    <mat-expansion-panel-header>
+        <mat-panel-title> 
+            <span type="button"
+                class="label 
+                label-default">
+                {{index}} ({{formType}})
+            </span>
+        
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div  >
+        <div class="wrapper">
+            <mat-icon class="right-float" matTooltip="cancel" (click)="hidePannel()">cancel</mat-icon>
+            <mat-icon class="right-float" matTooltip="edit" *ngIf="!formClicked" (click)="showForm()">edit</mat-icon>
+            <mat-icon class="right-float" matTooltip="check" *ngIf="formClicked" (click)="done()">check</mat-icon>
+            <div *ngIf="!formClicked && final">
+                <div class="title">
+                    <b>{{formType}}</b>
+                </div>
+                {{textContent}}
+            </div>
+        </div>
+    </div>
+    <div *ngIf="formClicked">
+        <form #formDirective
+            (ngSubmit)="onSubmit(formDirective)"
+            class="flex flex-col 
+            overflow-hidden form-padding
+            white-background">
+            
+            <div class="flex">
+                <mat-form-field appearance="outline">
+                    <mat-label>Add Note</mat-label>
+                    <textarea matInput
+                              cdkTextareaAutosize
+                              #autosize="cdkTextareaAutosize"
+                              cdkAutosizeMinRows="1"
+                              cdkAutosizeMaxRows="5"
+                              [(ngModel)]="textContent"
+                              [ngModelOptions]="{standalone: true}"
+                              >
+                        </textarea>
+                </mat-form-field>
+            </div>
+        </form>
+
+        <div class="btn-row">
+            <button class="btn-success" (click)="done()"> 
+                <i class="fa fa-check"></i> Done 
+            </button>
+
+            <button class="btn-dark" (click)="hideForm()"> 
+                <i class="fa fa-close"></i> Close 
+            </button>
+        </div>
+    </div>
+</mat-expansion-panel>

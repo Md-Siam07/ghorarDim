@@ -1,15 +1,14 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDrawer } from '@angular/material/sidenav';
-import { Observable, startWith, map } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
 
 @Component({
-  selector: 'app-number-form',
-  templateUrl: './number-form.component.html',
-  styleUrls: ['./number-form.component.css']
+  selector: 'app-image-form',
+  templateUrl: './image-form.component.html',
+  styleUrls: ['./image-form.component.css']
 })
-export class NumberFormComponent implements OnInit {
-
+export class ImageFormComponent implements OnInit {
   panelOpenState = false;
   formClicked = false;
   isSideBarOpen = false;
@@ -20,6 +19,7 @@ export class NumberFormComponent implements OnInit {
   maxValue : null|number = null;
   title : null|string = null;
   attribute: string = '';
+  sizeRestricted = false;
   @Input() index!: number;
   @Input() formType!: string;
   @Input() fieldName!: string;
@@ -44,6 +44,7 @@ export class NumberFormComponent implements OnInit {
   }
   
   showForm(){
+    this.final = false;
     this.formClicked = true;
   }
 
@@ -65,5 +66,6 @@ export class NumberFormComponent implements OnInit {
   onSubmit(form: any) {
 
   }
+
 
 }

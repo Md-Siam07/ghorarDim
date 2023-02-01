@@ -24,17 +24,22 @@
             <mat-icon class="right-float" matTooltip="cancel" (click)="hidePannel()">cancel</mat-icon>
             <mat-icon class="right-float" matTooltip="edit" *ngIf="!formClicked" (click)="showForm()">edit</mat-icon>
             <mat-icon class="right-float" matTooltip="check" *ngIf="formClicked" (click)="done()">check</mat-icon>
-            <div *ngIf="!formClicked">
+            <div *ngIf="!formClicked && final"  style="margin-left: 10px;">
                 <div class="title">
                     {{title}}
                 </div>
-                <form name="dummyForm" #dummyForm>
-                        <input class="dummy-form-control">
-                </form>
+                <div class="flex ">
+                    <label class="custom-file-upload" for="vdo">
+                        <i class="fa fa-upload"></i>
+                        Upload Video
+                    </label>
+                    <input type="file" name="uploadfile"
+                         id="vdo" style="display:none;"/>
+                </div>
+                <div class="flex">
+                    <video src="something.mp4" width="320" height="240" poster="../../assets/images/blank-thumbnail.jpg"></video>
+                </div>
             </div>
-            <span *ngIf="(minValue || maxValue) && final" class="red-text">
-                *Input should be between {{minValue||''}}  and {{maxValue||''}}
-            </span>
             <span class="red-text" *ngIf="final && required">
                 *Required
             </span>
@@ -76,22 +81,6 @@
                   </mat-form-field>
             </div>
 
-            <div class="row">
-                <mat-form-field appearance="outline" class="flex-auto row-item">
-                    <mat-label> Min {{fieldName}} </mat-label> 
-                    <input matInput 
-                         placeholder="0"
-                         type="number" [(ngModel)]="minValue"
-                         [ngModelOptions]="{standalone: true}"
-                         >
-                 </mat-form-field>
-
-                 <mat-form-field appearance="outline" class="flex-auto row-item">
-                    <mat-label> Max {{fieldName}} </mat-label> 
-                    <input matInput type="number" [(ngModel)]="maxValue" [ngModelOptions]="{standalone: true}">
-                 </mat-form-field>
-            </div>
-
             <div class="flex">
                 <mat-form-field appearance="outline" class="flex-auto" style="width:440px !important">
                     <mat-label> Hint </mat-label> 
@@ -99,24 +88,10 @@
                  </mat-form-field>
             </div>
 
-            <div class="flex ">
-                <!-- <button mat-raised-button extended color="primary">
-                  <mat-icon>upload</mat-icon>
-                  Upload Image
-                </button> -->
-                
-                <label class="custom-file-upload" for="img">
-                    <i class="fa fa-upload"></i>
-                    Upload Image
-                </label>
-                <input type="file" name="uploadfile"
-                     id="img" style="display:none;"/>
-            </div>
-
             <section class="checkbox-section">
                 <mat-checkbox class="checkbox-margin" [(ngModel)]="required" [ngModelOptions]="{standalone: true}" *ngIf="!disabled">Answer Required</mat-checkbox>
                 <mat-checkbox class="checkbox-margin" [(ngModel)]="disabled" [ngModelOptions]="{standalone: true}" *ngIf="!required">Is Disabled</mat-checkbox>
-            </section>
+              </section>
 
         </form>
 

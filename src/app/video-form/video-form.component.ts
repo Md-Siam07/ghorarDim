@@ -1,14 +1,14 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDrawer } from '@angular/material/sidenav';
-import { Observable, startWith, map } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
 
 @Component({
-  selector: 'app-number-form',
-  templateUrl: './number-form.component.html',
-  styleUrls: ['./number-form.component.css']
+  selector: 'app-video-form',
+  templateUrl: './video-form.component.html',
+  styleUrls: ['./video-form.component.css']
 })
-export class NumberFormComponent implements OnInit {
+export class VideoFormComponent implements OnInit {
 
   panelOpenState = false;
   formClicked = false;
@@ -44,6 +44,7 @@ export class NumberFormComponent implements OnInit {
   }
   
   showForm(){
+    this.final = false;
     this.formClicked = true;
   }
 

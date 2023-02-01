@@ -4,12 +4,12 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { Observable, startWith, map } from 'rxjs';
 
 @Component({
-  selector: 'app-number-form',
-  templateUrl: './number-form.component.html',
-  styleUrls: ['./number-form.component.css']
+  selector: 'app-date-form',
+  templateUrl: './date-form.component.html',
+  styleUrls: ['./date-form.component.css']
 })
-export class NumberFormComponent implements OnInit {
-
+export class DateFormComponent implements OnInit {
+  
   panelOpenState = false;
   formClicked = false;
   isSideBarOpen = false;
@@ -20,13 +20,13 @@ export class NumberFormComponent implements OnInit {
   maxValue : null|number = null;
   title : null|string = null;
   attribute: string = '';
+  fromConfig!: string;
   @Input() index!: number;
   @Input() formType!: string;
-  @Input() fieldName!: string;
   @ViewChild('drawer') drawer!: MatDrawer;
 
   myControl = new FormControl('');
-  options: string[] = ['One', 'Two', 'Three'];
+  options: string[] = ['Evacuation_number', 'Form_Field', 'Third_Element'];
   filteredOptions!: Observable<string[]>;
   
   constructor() { }

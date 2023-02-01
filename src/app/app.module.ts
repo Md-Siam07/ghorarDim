@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -7,6 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +21,13 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { NumberFormComponent } from './survey-form/number-form/number-form.component';
 import { SurveyFormModularizedComponent } from './survey-form-modularized/survey-form-modularized.component';
+import { DateFormComponent } from './date-form/date-form.component';
+import { NoteFormComponent } from './note-form/note-form.component';
+import { VideoFormComponent } from './video-form/video-form.component';
+import { ImageFormComponent } from './image-form/image-form.component';
+import { EmailFormComponent } from './email-form/email-form.component';
+import { GeolocationFormComponent } from './geolocation-form/geolocation-form.component';
+import { DropdownFormComponent } from './dropdown-form/dropdown-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +35,14 @@ import { SurveyFormModularizedComponent } from './survey-form-modularized/survey
     SurveyFormComponent,
     NumberFieldComponent,
     NumberFormComponent,
-    SurveyFormModularizedComponent
+    SurveyFormModularizedComponent,
+    DateFormComponent,
+    NoteFormComponent,
+    VideoFormComponent,
+    ImageFormComponent,
+    EmailFormComponent,
+    GeolocationFormComponent,
+    DropdownFormComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +56,12 @@ import { SurveyFormModularizedComponent } from './survey-form-modularized/survey
     MatSelectModule,
     MatButtonModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

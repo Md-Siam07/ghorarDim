@@ -1,23 +1,19 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDrawer } from '@angular/material/sidenav';
-import { Observable, startWith, map } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
 
 @Component({
-  selector: 'app-number-form',
-  templateUrl: './number-form.component.html',
-  styleUrls: ['./number-form.component.css']
+  selector: 'app-geolocation-form',
+  templateUrl: './geolocation-form.component.html',
+  styleUrls: ['./geolocation-form.component.css']
 })
-export class NumberFormComponent implements OnInit {
-
+export class GeolocationFormComponent implements OnInit {
   panelOpenState = false;
   formClicked = false;
-  isSideBarOpen = false;
   disabled = false;
   required = false;
   final = false;
-  minValue : null|number = null;
-  maxValue : null|number = null;
   title : null|string = null;
   attribute: string = '';
   @Input() index!: number;

@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'surveyForm';
+  fieldForNumber = ''
+  formType = 'date';
+  formType2 = 'number'
   fieldName: string = 'OBJECT ID';
 }
