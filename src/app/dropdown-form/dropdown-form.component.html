@@ -92,13 +92,21 @@
             <div class="flex" *ngIf="selected">
             
                 <div *ngFor="let option of selectedAttribute.options; let i=index">
-                    <b style="margin-left:10px">{{i}}.</b> <br>
-                    <mat-form-field appearance="outline" class="flex-auto" style="width:440px !important">
-                        <input matInput value="{{option.option}}">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" class="flex-auto" style="width:440px !important">
-                        <input matInput value="{{option.val}}">
-                    </mat-form-field>
+                    
+                    <div class="row">
+                        <b style="margin-left:10px">{{i+1}}.</b> 
+                        <mat-form-field appearance="outline" class="flex-auto row-item">
+                            <input matInput 
+                                 placeholder="{{option.option}}"
+                                 >
+                         </mat-form-field>
+        
+                         <mat-form-field appearance="outline" class="flex-auto row-item">
+                            <input matInput type="number"
+                                placeholder="{{option.val}}"
+                                >
+                         </mat-form-field>
+                    </div>
                 </div>
                 
             </div>

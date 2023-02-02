@@ -28,6 +28,7 @@ import { ImageFormComponent } from './image-form/image-form.component';
 import { EmailFormComponent } from './email-form/email-form.component';
 import { GeolocationFormComponent } from './geolocation-form/geolocation-form.component';
 import { DropdownFormComponent } from './dropdown-form/dropdown-form.component';
+import { LinkedDropdownFormComponent } from './linked-dropdown-form/linked-dropdown-form.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DropdownFormComponent } from './dropdown-form/dropdown-form.component';
     ImageFormComponent,
     EmailFormComponent,
     GeolocationFormComponent,
-    DropdownFormComponent
+    DropdownFormComponent,
+    LinkedDropdownFormComponent
   ],
   imports: [
     BrowserModule,
